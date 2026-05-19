@@ -1,7 +1,4 @@
-/**
- * 涅塔克什的手帐博客 - 多语言切换核心联动脚本
- * 适用于多页面架构 (index.html, diary.html 等)
- */
+/* 多语言切换 */
 
 function applyLanguage(lang) {
     // 1. 根据当前选择语言，切换 body 类名控制文本全局显隐
@@ -9,25 +6,25 @@ function applyLanguage(lang) {
     if (lang === 'de') document.body.classList.add('lang-de');
     if (lang === 'en') document.body.classList.add('lang-en');
     
-    // 2. 自动联动修改网站在浏览器标签页上的标题 (<title>)
-    // 它会优先读取各个页面自己定义的配置，如果没有，则降级显示默认名字
+    // 2. 自动联动修改标题 (<title>)
+    // 优先读取各个页面的自定义配置，如没有，则降级显示默认名字
     const defaultTitles = {
         'zh': '涅塔克什',
         'de': 'Nettahcs',
         'en': 'Nettahcs'
     };
     
-    // 如果你在具体页面定义了 window.pageTitles 字典，就会优先采用页面的专属标题
+    // 如果在具体页面定义了 window.pageTitles 字典，就会优先采用页面的专属标题
     if (window.pageTitles && window.pageTitles[lang]) {
         document.title = window.pageTitles[lang];
     } else {
         document.title = defaultTitles[lang] || 'Nettahcs';
     }
 
-    // 3. 将首选项安全保存在用户的浏览器本地中（跨页面共享状态）
+    // 3. 将首选项保存在用户的浏览器本地中
     localStorage.setItem('preferred-lang', lang);
 
-    // 4. 驱动右侧挂载的纸条按钮：对应激活的语言往右侧拔出显示
+    // 4. 纸条按钮激活时拔出显示
     document.querySelectorAll('.lang-bookmark-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');

@@ -1,8 +1,8 @@
 /* ==========================================
-   像素字体引入 (分包合并)
+   本地像素字体精准引入 (分包合并)
    ========================================== */
 
-/* 1. 西文字体包（负责英文、德文、数字以及西文标点） */
+/* 1. 先引入西文字体包（负责英文、德文、数字以及西文标点） */
 @font-face {
     font-family: 'MyPixelFont';
     src: url('fonts/fusion-pixel-10px-proportional-latin.otf.woff2') format('woff2');
@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-/* 2. 中文包（负责汉字、中文全角标点） */
+/* 2. 再引入中文包（负责汉字、中文全角标点） */
 @font-face {
     font-family: 'MyPixelFont';
     src: url('fonts/fusion-pixel-10px-proportional-zh_hans.otf.woff2') format('woff2');
@@ -18,7 +18,7 @@
     font-style: normal;
 }
 
-/* 3.缺字替补 */
+/* 3. 统一全局后备字体链 */
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +37,7 @@ body, html {
 }
 
 /* ==========================================
-   2. 背景与容器设置
+   2. 背景与大容器设置
    ========================================== */
 .canvas {
     width: 100%;
@@ -293,7 +293,7 @@ body, html {
     z-index: 20;
 }
 
-/* 💡 修正：明确胶带与头像的图像渲染模式，防止被上级继承污染 */
+/* 明确胶带与头像的图像渲染模式，防止被上级继承污染 */
 .tape, .profile-avatar {
     image-rendering: auto !important;
 }
@@ -523,22 +523,24 @@ body, html {
 }
 
 .intro-container {
-    display: flex;
-    gap: 25px;
-    align-items: flex-start;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 25px !important;
+    width: 100%;
 }
 
 .profile-avatar {
-    width: 110px;
-    height: 110px;
+    width: 110px !important;
+    height: 110px !important;
     object-fit: cover;
     border-radius: 50%;
     border: 3px double #312b3d;
     box-shadow: 2px 4px 10px rgba(49, 43, 61, 0.12);
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
     transform: rotate(-2deg);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* 💡 关键修复：强制头像使用浏览器的标准顺滑渲染，解除高清晰图像的狗牙虚化 */
     image-rendering: auto !important;
 }
 
@@ -552,6 +554,7 @@ body, html {
     line-height: 1.8;
     color: #463f52;
     text-align: justify;
+    margin: 0 !important;
 }
 
 .highlight-link {
@@ -630,60 +633,7 @@ body, html {
     }
 
 /* ==========================================
-   9. 移动端响应式设计
-   ========================================== */
-@media (max-width: 900px) {
-    .scrapbook-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .sidebar-widgets {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .widget-wrapper {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .nav-bar-sticky {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-
-    .scrapbook-card {
-        padding: 20px;
-    }
-
-    .tape {
-        display: none;
-    }
-
-    .lang-bookmarks-container {
-        right: 0px !important;
-        top: 140px !important;
-        gap: 8px !important;
-    }
-
-    .lang-bookmark-btn {
-        width: 38px !important;
-        height: 30px !important;
-        font-size: 0.75rem !important;
-        padding-right: 6px !important;
-        transform: translateX(12px) !important;
-    }
-
-        .lang-bookmark-btn.active {
-            width: 44px !important;
-            transform: translateX(24px) !important;
-        }
-}
-
-/* ==========================================
-   10. 网页全局噪点滤镜
+   9. 全局网页噪点滤镜与三语核心隐藏基类
    ========================================== */
 body::before {
     content: "";
@@ -700,9 +650,6 @@ body::before {
     z-index: 9999;
 }
 
-/* ==========================================
-   11. 三语模式切换核心控制
-   ========================================== */
 .zh {
     display: revert !important;
 }
@@ -739,6 +686,9 @@ body::before {
     display: revert !important;
 }
 
+/* ==========================================
+   10. 💻 电脑端多语言侧边物理标签悬浮默认样式
+   ========================================== */
 .lang-bookmarks-container {
     position: absolute;
     top: 210px;
@@ -759,7 +709,7 @@ body::before {
     padding-left: 0;
     width: 60px;
     height: 38px;
-    font-family: "F縫合怪像素體", monospace;
+    font-family: inherit;
     font-size: 0.85rem;
     font-weight: normal;
     color: #ffffff;
@@ -807,4 +757,172 @@ body::before {
     padding-right: 0 !important;
     box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.4), 1px 1px 2px rgba(0, 0, 0, 0.2);
     z-index: 15;
+}
+
+/* ==========================================
+    11. 移动端响应式终极适配（900px以下拦截）
+   ========================================== */
+@media screen and (max-width: 900px) {
+    /* 铺底流画布 */
+    .canvas {
+        padding: 10px;
+        height: auto;
+        min-height: 100vh;
+        display: block;
+    }
+
+    /* 容器坍塌为单列垂直流 */
+    .scrapbook-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* 侧边挂件横铺折行 */
+    .sidebar-widgets {
+        width: 100%;
+        max-width: 450px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .widget-wrapper {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    /* 音乐组件溢出预防 */
+    .widget-music .player-iframe-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    /* 主日记卡片：缩小间距，开启相对定位锚定语言书签 */
+    .scrapbook-card {
+        width: 100%;
+        max-width: 450px;
+        padding: 25px 15px;
+        box-sizing: border-box;
+        position: relative; /* 🔒 锁死移动端多语言书签的绝对坐标系 */
+    }
+
+    /* 胶带微缩 */
+    .tape {
+        display: block !important; /* 恢复显示，小巧贴边更精致 */
+        transform: scale(0.65);
+    }
+
+    .tape-top-left {
+        top: -14px;
+        left: -20px;
+    }
+
+    .tape-top-right {
+        top: -14px;
+        right: -20px;
+    }
+
+    .tape-bottom-left {
+        bottom: -14px;
+        left: -20px;
+    }
+
+    .tape-bottom-right {
+        bottom: -14px;
+        right: -20px;
+    }
+
+    /* 导航栏便签转为 2x2 网格 */
+    .nav-bar-sticky {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0 25px 0;
+        width: 100%;
+    }
+
+    .sticky-note-wrapper {
+        transform: none !important;
+        margin: 0 !important;
+    }
+
+    .sticky-note {
+        width: 100%;
+    }
+
+    /* ==========================================
+       移动端多语言书签：强制贴合主板块右边缘
+       ========================================== */
+    .lang-bookmarks-container {
+        position: absolute;
+        right: 0px !important; /* 紧咬主卡片右边缘线 */
+        top: 140px !important; /* 精准降落至主标题下方空位 */
+        left: auto !important;
+        bottom: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        z-index: 99;
+        margin: 0 !important;
+    }
+
+    .lang-bookmark-btn {
+        transform: none !important; /* 清除电脑端的倾斜角度 */
+        border-radius: 4px 0 0 4px !important; /* 只有左侧做圆角，右侧紧嵌入卡片 */
+        border-top: 1px solid rgba(0,0,0,0.2) !important;
+        border-left: 1px solid rgba(0,0,0,0.2) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+        border-right: none !important; /* 右侧贴死无边框 */
+
+        width: 36px !important; /* 完美贴合的小长度 */
+        height: 24px !important;
+        /* 文本完美像素级居中 */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        font-size: 10px !important;
+        box-shadow: -1px 1px 0px rgba(0,0,0,0.12) !important;
+        transition: transform 0.2s ease, width 0.15s ease !important;
+    }
+
+    .btn-zh {
+        writing-mode: horizontal-tb !important; /* 强制移动端中文水平显示 */
+        letter-spacing: 0 !important;
+    }
+
+    /* 🏷️ 移动端点击激活状态：改变位移方向（向左伸出弹射） */
+    .lang-bookmark-btn.active {
+        width: 42px !important; /* 伸长突出 */
+        transform: translateX(-4px) !important; /* 向左位移爆发出选中感 */
+        justify-content: center !important;
+        padding-right: 0 !important;
+        box-shadow: -2px 2px 4px rgba(0,0,0,0.2) !important;
+    }
+}
+
+/* ==========================================
+   📱 12. 极窄手机屏（600px以下独立解耦）
+   ========================================== */
+@media screen and (max-width: 600px) {
+    /* 只有在小手机屏幕上，自述卡片才允许坍塌居中，绝不污染PC端 */
+    .intro-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+
+    .profile-avatar {
+        width: 85px !important;
+        height: 85px !important;
+        transform: rotate(0deg) !important;
+    }
 }
