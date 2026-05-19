@@ -14,7 +14,7 @@
 
             <aside class="sidebar-widgets">
 
-                <div class="widget-wrapper widget-music">
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
                     <div class="widget-content">
                         <div class="widget-header">
                             <span class="zh">当前播放</span>
@@ -22,15 +22,17 @@
                             <span class="en">Now Playing</span>
                         </div>
                         <hr class="pixel-line-sm">
-                        <p class="widget-body">
-                            <span class="zh">一首歌</span>
-                            <span class="de">Ein Lied</span>
-                            <span class="en">A Song</span>
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
                         </p>
                         <div class="music-progress">
-                            <div class="progress-bar"></div>
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
                         </div>
                     </div>
+
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
                 </div>
 
                 <div class="widget-wrapper widget-mood">
@@ -183,7 +185,9 @@
                     </p>
                 </div>
 
-            </main> <div class="lang-bookmarks-container">
+            </main> 
+            
+            <div class="lang-bookmarks-container">
                 <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
                 <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
                 <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
@@ -207,10 +211,71 @@
             'de': 'Nettahcs | Startseite',
             'en': 'Nettahcs | Home'
         };
+
+        // 自动化控制机制
+        const bgm = document.getElementById('bgm-player');
+        const musicTitle = document.getElementById('music-title');
+        const progressBar = document.getElementById('music-bar');
+
+        // 1. 全局监听：访客进入小站点击网页任意位置，解除静音
+        document.addEventListener('click', function() {
+            if (bgm && bgm.muted) {
+                bgm.muted = false;
+                bgm.play().then(() => {
+                    updateBgmText(true);
+                }).catch(err => console.log("播放被拦截重试:", err));
+            }
+        }, { once: true }); // once: true 保证该解锁行为只在第一次点击触发
+
+        // 2. 实时刷新紫色进度条的宽度
+        if (bgm) {
+            bgm.addEventListener('timeupdate', function() {
+                if (bgm.duration) {
+                    const percentage = (bgm.currentTime / bgm.duration) * 100;
+                    if (progressBar) progressBar.style.width = percentage + '%';
+                }
+            });
+        }
+
+        // 3. 手动点击音乐小挂件：支持暂停与恢复播放
+        function togglePlayMusic() {
+            if (!bgm) return;
+            if (bgm.muted) bgm.muted = false; // 如果首次点击的是挂件本身，直接解锁静音
+
+            if (!bgm.paused) {
+                bgm.pause();
+                updateBgmText(false);
+            } else {
+                bgm.play().then(() => {
+                    updateBgmText(true);
+                });
+            }
+        }
+
+        // 4. 更新文字状态并触发多语言重新检测
+        function updateBgmText(isAudioPlaying) {
+            if (!musicTitle) return;
+            if (isAudioPlaying) {
+                musicTitle.innerHTML = `
+                    <span class="zh">SABBATH - 正在播放</span>
+                    <span class="de">SABBATH - Wird gespielt</span>
+                    <span class="en">SABBATH - Now Playing</span>
+                `;
+            } else {
+                musicTitle.innerHTML = `
+                    <span class="zh">音乐已暂停</span>
+                    <span class="de">Musik pausiert</span>
+                    <span class="en">Music Paused</span>
+                `;
+            }
+            // 让多语言脚本刷新当前节点的显示隐藏状态
+            if (typeof toggleLanguage === 'function') {
+                const currentLang = document.documentElement.lang || 'zh';
+                toggleLanguage(currentLang);
+            }
+        }
     </script>
 
     <script src="lang-switch.js"></script>
-</body>
-</html>
 </body>
 </html>
