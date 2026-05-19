@@ -2,7 +2,7 @@
    本地像素字体精准引入 (分包合并)
    ========================================== */
 
-/* 1. 先引入西文字体包（负责英文、德文、数字以及西文标点） */
+/* 1. 西文字体包（负责英文、德文、数字以及西文标点） */
 @font-face {
     font-family: 'MyPixelFont';
     src: url('fonts/fusion-pixel-10px-proportional-latin.otf.woff2') format('woff2');
@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-/* 2. 再引入中文包（负责汉字、中文全角标点） */
+/* 2. 中文包（负责汉字、中文全角标点） */
 @font-face {
     font-family: 'MyPixelFont';
     src: url('fonts/fusion-pixel-10px-proportional-zh_hans.otf.woff2') format('woff2');
@@ -18,7 +18,7 @@
     font-style: normal;
 }
 
-/* 3. 统一全局后备字体链 */
+/* 3. 统一全局 */
 * {
     margin: 0;
     padding: 0;
