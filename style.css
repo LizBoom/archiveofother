@@ -1,5 +1,5 @@
 /* ==========================================
-   本地像素字体精准引入 (分包合并)
+   像素字体引入 (分包合并)
    ========================================== */
 
 /* 1. 西文字体包（负责英文、德文、数字以及西文标点） */
@@ -295,7 +295,7 @@ body, html {
 
 /* 明确胶带与头像的图像渲染模式，防止被上级继承污染 */
 .tape, .profile-avatar {
-    image-rendering: auto !important;
+    image-rendering: auto;
 }
 
 .tape {
@@ -523,25 +523,25 @@ body, html {
 }
 
 .intro-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-    gap: 25px !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 25px;
     width: 100%;
 }
 
 .profile-avatar {
-    width: 110px !important;
-    height: 110px !important;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px double #312b3d;
     box-shadow: 2px 4px 10px rgba(49, 43, 61, 0.12);
-    flex-shrink: 0 !important;
+    flex-shrink: 0;
     transform: rotate(-2deg);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    image-rendering: auto !important;
+    image-rendering: auto;
 }
 
     .profile-avatar:hover {
@@ -554,7 +554,7 @@ body, html {
     line-height: 1.8;
     color: #463f52;
     text-align: justify;
-    margin: 0 !important;
+    margin: 0;
 }
 
 .highlight-link {
@@ -687,7 +687,7 @@ body::before {
 }
 
 /* ==========================================
-   10. 💻 电脑端多语言侧边物理标签悬浮默认样式
+   10. 侧标签悬浮样式
    ========================================== */
 .lang-bookmarks-container {
     position: absolute;
@@ -760,10 +760,10 @@ body::before {
 }
 
 /* ==========================================
-    11. 移动端响应式终极适配（900px以下拦截）
+    11. 响应式方案
    ========================================== */
 @media screen and (max-width: 900px) {
-    /* 铺底流画布 */
+    /* 垂直画布 */
     .canvas {
         padding: 10px;
         height: auto;
@@ -771,7 +771,7 @@ body::before {
         display: block;
     }
 
-    /* 容器坍塌为单列垂直流 */
+    /* 主体瀑布流 */
     .scrapbook-container {
         display: flex;
         flex-direction: column;
@@ -782,64 +782,63 @@ body::before {
         margin: 0 auto;
     }
 
-    /* 侧边挂件横铺折行 */
-    .sidebar-widgets {
-        width: 100%;
-        max-width: 450px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
+        /* 折叠小组件 */
+        .scrapbook-container .sidebar-widgets {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
 
-    .widget-wrapper {
-        flex: 1;
-        min-width: 200px;
-    }
+        .scrapbook-container .widget-wrapper {
+            flex: 1;
+            min-width: 200px;
+        }
 
-    /* 音乐组件溢出预防 */
     .widget-music .player-iframe-container {
         width: 100%;
         overflow-x: auto;
     }
 
-    /* 主日记卡片：缩小间距，开启相对定位锚定语言书签 */
-    .scrapbook-card {
+    /* 主卡片 */
+    .scrapbook-container .scrapbook-card {
         width: 100%;
         max-width: 450px;
         padding: 25px 15px;
         box-sizing: border-box;
-        position: relative; /* 🔒 锁死移动端多语言书签的绝对坐标系 */
+        position: relative;
     }
 
-    /* 胶带微缩 */
-    .tape {
-        display: block !important; /* 恢复显示，小巧贴边更精致 */
+    /* 胶带 */
+    .scrapbook-container .tape {
+        display: block;
         transform: scale(0.65);
     }
 
-    .tape-top-left {
+    .scrapbook-container .tape-top-left {
         top: -14px;
         left: -20px;
     }
 
-    .tape-top-right {
+    .scrapbook-container .tape-top-right {
         top: -14px;
         right: -20px;
     }
 
-    .tape-bottom-left {
+    .scrapbook-container .tape-bottom-left {
         bottom: -14px;
         left: -20px;
     }
 
-    .tape-bottom-right {
+    .scrapbook-container .tape-bottom-right {
         bottom: -14px;
         right: -20px;
     }
 
-    /* 导航栏便签转为 2x2 网格 */
+    /*  2x2导航栏 */
     .nav-bar-sticky {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -848,81 +847,94 @@ body::before {
         width: 100%;
     }
 
-    .sticky-note-wrapper {
-        transform: none !important;
-        margin: 0 !important;
+    .scrapbook-container .sticky-note-wrapper {
+        transform: none;
+        margin: 0;
     }
 
-    .sticky-note {
+    .scrapbook-container .sticky-note {
         width: 100%;
     }
 
     /* ==========================================
-       移动端多语言书签：强制贴合主板块右边缘
+       响应式语言标签
        ========================================== */
-    .lang-bookmarks-container {
-        position: absolute;
-        right: 0px !important; /* 紧咬主卡片右边缘线 */
-        top: 140px !important; /* 精准降落至主标题下方空位 */
-        left: auto !important;
-        bottom: auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 6px !important;
+    .scrapbook-container .lang-bookmarks-container {
+        position: fixed;
+        right: -18px;
+        top: 140px;
+        left: auto;
+        bottom: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
         z-index: 99;
-        margin: 0 !important;
+        margin: 0;
     }
 
-    .lang-bookmark-btn {
-        transform: none !important; /* 清除电脑端的倾斜角度 */
-        border-radius: 4px 0 0 4px !important; /* 只有左侧做圆角，右侧紧嵌入卡片 */
-        border-top: 1px solid rgba(0,0,0,0.2) !important;
-        border-left: 1px solid rgba(0,0,0,0.2) !important;
-        border-bottom: 1px solid rgba(0,0,0,0.2) !important;
-        border-right: none !important; /* 右侧贴死无边框 */
-
-        width: 36px !important; /* 完美贴合的小长度 */
-        height: 24px !important;
-        /* 文本完美像素级居中 */
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 0 !important;
-        font-size: 10px !important;
-        box-shadow: -1px 1px 0px rgba(0,0,0,0.12) !important;
-        transition: transform 0.2s ease, width 0.15s ease !important;
+    .scrapbook-container .lang-bookmark-btn {
+        transform: none;
+        border-radius: 4px 0 0 4px;
+        border-top: 1px solid rgba(0,0,0,0.2);
+        border-left: 1px solid rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        border-right: none;
+        width: 36px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 10px;
+        box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
+        transition: transform 0.2s ease, width 0.15s ease;
     }
 
-    .btn-zh {
-        writing-mode: horizontal-tb !important; /* 强制移动端中文水平显示 */
-        letter-spacing: 0 !important;
+    .scrapbook-container .btn-zh {
+        writing-mode: horizontal-tb;
+        letter-spacing: 0;
     }
 
-    /* 🏷️ 移动端点击激活状态：改变位移方向（向左伸出弹射） */
+    /* 响应式激活状态改为向左伸出 */
     .lang-bookmark-btn.active {
-        width: 42px !important; /* 伸长突出 */
-        transform: translateX(-4px) !important; /* 向左位移爆发出选中感 */
+        width: 42px !important;
+        transform: translateX(-4px) !important;
         justify-content: center !important;
         padding-right: 0 !important;
         box-shadow: -2px 2px 4px rgba(0,0,0,0.2) !important;
     }
 }
 
-/* ==========================================
-   📱 12. 极窄手机屏（600px以下独立解耦）
-   ========================================== */
 @media screen and (max-width: 600px) {
-    /* 只有在小手机屏幕上，自述卡片才允许坍塌居中，绝不污染PC端 */
-    .intro-container {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 15px !important;
+    .scrapbook-card .intro-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
     }
 
-    .profile-avatar {
-        width: 85px !important;
-        height: 85px !important;
-        transform: rotate(0deg) !important;
+    .scrapbook-card .profile-avatar {
+        width: 85px;
+        height: 85px;
+        transform: rotate(0deg);
     }
+}
+/* ==========================================
+   Giscus 评论区改为像素风
+   ========================================== */
+.giscus {
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    border: 1px dashed #9c94a8; 
+    background-color: rgba(235, 230, 220, 0.4); 
+}
+
+giscus-widget {
+    font-family: 'MyPixelFont', "Courier New", monospace !important;
+    --giscus-font-sans: 'MyPixelFont', monospace !important;
+}
+
+giscus-widget::part(footer) {
+        display: none !important;
 }

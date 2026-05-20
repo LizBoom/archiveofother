@@ -60,13 +60,20 @@
                         </div>
                         <hr class="pixel-line-sm">
                         <div class="chatbox-preview">
-                            <div class="chat-msg"><strong>测:</strong> 功能未实现！</div>
-                            <div class="chat-msg"><strong>试:</strong> 功能未实现。</div>
+                            <div class="chat-msg"><strong>System:</strong> Welcome!</div>
+                            <div class="chat-msg">
+                                <span class="zh">在这里留下你永久的足迹吧。</span>
+                                <span class="de">Hinterlasse hier deine Spuren.</span>
+                                <span class="en">Leave your permanent footprints here.</span>
+                            </div>
                         </div>
-                        <form class="chat-form" onsubmit="return false;">
-                            <input type="text" placeholder="名字..." class="chat-input-name">
-                            <input type="text" placeholder="输入留言..." class="chat-input-text">
-                        </form>
+                        <a href="#guestbook-section" style="text-decoration: none; margin-top: 8px; display: block;">
+                            <button type="button" class="chat-input-text" style="width: 100%; text-align: center; cursor: pointer; background: #fcfbfe; border: 1px solid #9188a1; padding: 4px 0; font-family: inherit; font-size: 11px;">
+                                <span class="zh">👇 前往卡片底部签到</span>
+                                <span class="de">👇 Zum Gästebuch nach unten</span>
+                                <span class="en">👇 Go to bottom to sign</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -185,6 +192,17 @@
                     </p>
                 </div>
 
+                <section class="content-section" id="guestbook-section" style="margin-top: 50px;">
+                    <h2 class="section-title">
+                        <span class="zh">·留下痕迹 / Guestbook</span>
+                        <span class="de">·Ins Gästebuch eintragen</span>
+                        <span class="en">·Sign My Guestbook</span>
+                    </h2>
+                    <hr class="pixel-line">
+
+                    <div class="giscus"></div>
+                </section>
+
             </main>
 
             <div class="lang-bookmarks-container">
@@ -206,76 +224,93 @@
     </div>
 
     <script>
+        // 页面专属标题配置
         window.pageTitles = {
             'zh': '涅塔克什 | 首页',
             'de': 'Nettahcs | Startseite',
             'en': 'Nettahcs | Home'
         };
 
-        // 自动化控制机制
-        const bgm = document.getElementById('bgm-player');
-        const musicTitle = document.getElementById('music-title');
-        const progressBar = document.getElementById('music-bar');
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
 
-        // 1. 全局监听：访客进入小站点击网页任意位置，解除静音
-        document.addEventListener('click', function () {
-            if (bgm && bgm.muted) {
-                bgm.muted = false;
-                bgm.play().then(() => {
-                    updateBgmText(true);
-                }).catch(err => console.log("播放被拦截重试:", err));
-            }
-        }, { once: true }); // once: true 保证该解锁行为只在第一次点击触发
-
-        // 2. 实时刷新紫色进度条的宽度
-        if (bgm) {
-            bgm.addEventListener('timeupdate', function () {
-                if (bgm.duration) {
-                    const percentage = (bgm.currentTime / bgm.duration) * 100;
-                    if (progressBar) progressBar.style.width = percentage + '%';
+            // 1. 全局监听：访客点击网页任意位置，解除静音
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    }).catch(err => console.log("播放被拦截重试:", err));
                 }
-            });
-        }
+            }, { once: true }); // 保证该解锁行为只在第一次点击触发
 
-        // 3. 手动点击音乐小挂件：支持暂停与恢复播放
-        function togglePlayMusic() {
-            if (!bgm) return;
-            if (bgm.muted) bgm.muted = false; // 如果首次点击的是挂件本身，直接解锁静音
-
-            if (!bgm.paused) {
-                bgm.pause();
-                updateBgmText(false);
-            } else {
-                bgm.play().then(() => {
-                    updateBgmText(true);
+            // 2. 实时刷新紫色进度条的宽度
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration) {
+                        const percentage = (bgm.currentTime / bgm.duration) * 100;
+                        if (progressBar) progressBar.style.width = percentage + '%';
+                    }
                 });
             }
-        }
 
-        // 4. 更新文字状态并触发多语言重新检测
-        function updateBgmText(isAudioPlaying) {
-            if (!musicTitle) return;
-            if (isAudioPlaying) {
-                musicTitle.innerHTML = `
-                        <span class="zh">SABBATH - 正在播放</span>
-                        <span class="de">SABBATH - Wird gespielt</span>
-                        <span class="en">SABBATH - Now Playing</span>
-                    `;
-            } else {
-                musicTitle.innerHTML = `
-                        <span class="zh">音乐已暂停</span>
-                        <span class="de">Musik pausiert</span>
-                        <span class="en">Music Paused</span>
-                    `;
+            // 3. 手动点击音乐小挂件：支持暂停与恢复播放
+            // onclick="togglePlayMusic()" 需全局访问，因此挂载到 window 上
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                if (bgm.muted) bgm.muted = false; // 如果首次点击的是挂件本身，直接解锁静音
+
+                if (!bgm.paused) {
+                    bgm.pause();
+                    updateBgmText(false);
+                } else {
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    });
+                }
+            };
+
+            // 4. 更新音乐文字状态
+            function updateBgmText(isAudioPlaying) {
+                if (!musicTitle) return;
+                if (isAudioPlaying) {
+                    musicTitle.innerHTML = `
+                                <span class="zh">SABBATH - 正在播放</span>
+                                <span class="de">SABBATH - Wird gespielt</span>
+                                <span class="en">SABBATH - Now Playing</span>
+                            `;
+                } else {
+                    musicTitle.innerHTML = `
+                                <span class="zh">音乐已暂停</span>
+                                <span class="de">Musik pausiert</span>
+                                <span class="en">Music Paused</span>
+                            `;
+                }
             }
-            // 让多语言脚本刷新当前节点的显示隐藏状态
-            if (typeof toggleLanguage === 'function') {
-                const currentLang = document.documentElement.lang || 'zh';
-                toggleLanguage(currentLang);
-            }
-        }
+        });
     </script>
 
     <script src="lang-switch.js"></script>
+
+    <script src="lang-switch.js"></script>
+
+    <script src="https://giscus.app/client.js"
+            data-repo="LizBoom/archiveofother"
+            data-repo-id="R_kgDOSgCjdg"
+            data-category="General"
+            data-category-id="DIC_kwDOSgCjds4C9a9b"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="catppuccin_latte"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
 </body>
 </html>
