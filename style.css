@@ -920,21 +920,30 @@ body::before {
     }
 }
 /* ==========================================
-   Giscus 评论区改为像素风
+   留言页像素css
    ========================================== */
-.giscus {
+
+/* 外框 */
+.retro-gb-box {
     width: 100%;
-    margin-top: 25px;
-    padding: 16px;
-    border: 1px dashed #9c94a8; 
-    background-color: rgba(235, 230, 220, 0.4); 
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #231d30; 
+    border: 2px solid #312b3d;
+    box-shadow: inset 2px 2px 0px #000, 1px 1px 0px #9c94a8; 
 }
 
-giscus-widget {
-    font-family: 'MyPixelFont', "Courier New", monospace !important;
-    --giscus-font-sans: 'MyPixelFont', monospace !important;
-}
+    giscus-widget::part(btn-primary) {
+        border-radius: 0px !important;
+        border: 1px solid #312b3d !important;
+        background: #e0dbec !important;
+        color: #312b3d !important;
+        font-family: 'MyPixelFont', monospace !important;
+        box-shadow: 1px 1px 0px #000 !important;
+    }
 
-giscus-widget::part(footer) {
+/* 3. 隐藏图标、表情、商业声明页脚 */
+    giscus-widget::part(comment-reactions),
+    giscus-widget::part(footer) {
         display: none !important;
-}
+    }
