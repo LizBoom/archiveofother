@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="canvas">
+
+        <div class="scrapbook-container">
+
+            <aside class="sidebar-widgets">
+
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前位置</span>
+                            <span class="de">Aktuelle Position</span>
+                            <span class="en">Current Location</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body">
+                            <span class="zh">漫无目的地游荡</span>
+                            <span class="de">Ziellos umherwandern</span>
+                            <span class="en">Wandering aimlessly</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="widget-wrapper widget-guestbook">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">访客留言</span>
+                            <span class="de">Gästebuch</span>
+                            <span class="en">Guestbook</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+
+                        <div class="chatbox-preview" style="margin-bottom: 8px;">
+                            <div class="chat-msg">
+                                <strong style="color: #9c94a8;">Nettahcs:</strong>
+                                <span class="zh">欢迎光临!</span>
+                                <span class="de">Willkommen!</span>
+                                <span class="en">Welcome!</span>
+                            </div>
+                        </div>
+
+                        <a href="guestbook.html" class="chat-input-text" role="button" style="text-decoration: none; display: block; text-align: center; line-height: 28px;">
+                            <span class="zh"> 留言簿 </span>
+                            <span class="de"> Gästebuch </span>
+                            <span class="en"> Guestbook </span>                          
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget-wrapper widget-counter">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">访客数量</span>
+                            <span class="de">Besucherzahl</span>
+                            <span class="en">Visitors</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <div class="visitor-counter">08010</div>
+                    </div>
+                </div>
+
+            </aside>
+
+            <main class="scrapbook-card">
+
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <div class="header-box">
+                    <h1 class="zh">涅塔克什</h1>
+                    <p class="subtitle zh">何日桑田俱变了，不叫伊水向东流？</p>
+
+                    <h1 class="de">Nettahcs</h1>
+                    <p class="subtitle de">Wie wird man seinen schatten los?</p>
+
+                    <h1 class="en">Nettahcs</h1>
+                    <p class="subtitle en">Wie wird man seinen schatten los?</p>
+                </div>
+
+                <nav class="nav-bar-sticky">
+                    <div class="sticky-note-wrapper note-purple-light">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note">
+                                <span class="zh">首页</span>
+                                <span class="de">STARTSEITE</span>
+                                <span class="en">HOME</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-mid">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note">
+                                <span class="zh">随笔</span>
+                                <span class="de">TAGEBUCH</span>
+                                <span class="en">DIARY</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-blue">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note">
+                                <span class="zh">创作物</span>
+                                <span class="de">ARCHIV</span>
+                                <span class="en">ARCHIVE</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-pink">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note">
+                                <span class="zh">关于</span>
+                                <span class="de">ÜBER MICH</span>
+                                <span class="en">ABOUT</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <section class="content-section">
+                    <h2 class="section-title">
+                        <span class="zh">·关于我 / Who is here?</span>
+                        <span class="de">·Über mich / Wer ist hier?</span>
+                        <span class="en">·About Me / Who is here?</span>
+                    </h2>
+                    <hr class="pixel-line">
+                    <div class="intro-container">
+                        <img src="images/avatar1.png" class="profile-avatar" alt="涅塔克什">
+                        <p class="intro-text">
+                            <span class="zh">来自索拉里斯海洋的旅行者，目前居住在萨尔茨堡的乡下工作。</span>
+                            <span class="de">Ein Reisender aus dem Solaris-Ozean, der derzeit auf dem Land in Salzburg lebt und arbeitet.</span>
+                            <span class="en">A voyager from the Solaris ocean, currently living and working in the countryside of Salzburg.</span>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="section-title">
+                        <span class="zh">·这是哪 / What is this?</span>
+                        <span class="de">· Was ist hier?</span>
+                        <span class="en">· What is here?</span>
+                    </h2>
+                    <hr class="pixel-line">
+                    <p class="body-text">
+                        <span class="zh">欢迎光临，这是涅塔克什的原创作品、约稿的收集地，存放着我的一些随想、trpg模组、小说和一些其他的项目。我想要一个能够表达自己的角落，用来记录我的生活和创作。希望你们能找到些有趣的东西！</span>
+                        <span class="de">Willkommen. Dies ist die Sammelstelle für Nietakeshs Originalwerke und Auftragsarbeiten, in der meine Gedanken, TRPG-Module, Romane und andere Projekte untergebracht sind. Ich wollte eine Ecke, um mich auszudrücken, um mein Leben und meine Kreationen festzuhalten. Hoffentlich finden Sie etwas Interessantes!</span>
+                        <span class="en">Welcome. This is the gathering place for Nietakesh's original works and commissions, housing my thoughts, TRPG modules, novels, and other projects. I wanted a corner to express myself, to record my life and creations. Hope you find something interesting!</span>
+                    </p>
+                </section>
+
+                <div class="quote-paper">
+                    <span class="quote-title">
+                        <span class="zh">每日一句 </span>
+                        <span class="de">Zitat des Tages </span>
+                        <span class="en">Quote of the day</span>
+                    </span>
+                    <p class="quote-text">
+                        <span class="zh">“你当领先一切离别，仿佛它们都在你身后，就像刚刚逝去的冬天”</span>
+                        <span class="de">"Sei allem Abschied voran, als wäre er hinter dir, wie der Winter, der eben vergeht."</span>
+                        <span class="en">"Be ahead of all parting, as though it already were behind you, like the winter that has just gone by."</span>
+                    </p>
+                </div>
+
+            </main>
+
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="#" class="footer-link">返回顶部</a> • 祝你一切顺利！</span>
+                <span class="de">Möchten Sie zum ersten Mondaufgang zurückkehren? / <a href="#" class="footer-link">Startseite</a> • Alles Gute für Sie!</span>
+                <span class="en">Want to return to the first moonrise? / <a href="#" class="footer-link">Home</a> • Wish you all the best!</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        // 页面标题
+        window.pageTitles = {
+            'zh': '涅塔克什 | 首页',
+            'de': 'Nettahcs | Startseite',
+            'en': 'Nettahcs | Home'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            // 1. 全局监听：访客点击网页任意位置，解除静音
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    }).catch(err => console.log("播放被拦截重试:", err));
+                }
+            }, { once: true }); // 保证该解锁行为只在第一次点击触发
+
+            // 2. 紫色进度条
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration) {
+                        const percentage = (bgm.currentTime / bgm.duration) * 100;
+                        if (progressBar) progressBar.style.width = percentage + '%';
+                    }
+                });
+            }
+
+            // 3. 音乐小挂件手动暂停与恢复播放
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                if (bgm.muted) bgm.muted = false;
+
+                if (!bgm.paused) {
+                    bgm.pause();
+                    updateBgmText(false);
+                } else {
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    });
+                }
+            };
+
+            // 4. 更新音乐文字状态
+            function updateBgmText(isAudioPlaying) {
+                if (!musicTitle) return;
+                if (isAudioPlaying) {
+                    musicTitle.innerHTML = `
+                                    <span class="zh">SABBATH - 正在播放</span>
+                                    <span class="de">SABBATH - Wird gespielt</span>
+                                    <span class="en">SABBATH - Now Playing</span>
+                                `;
+                } else {
+                    musicTitle.innerHTML = `
+                                    <span class="zh">音乐已暂停</span>
+                                    <span class="de">Musik pausiert</span>
+                                    <span class="en">Music Paused</span>
+                                `;
+                }
+            }
+        });
+    </script>
+
+    <script src="lang-switch.js"></script>
+
+</body>
+</html>

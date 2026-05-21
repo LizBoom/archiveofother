@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什 | 留言簿</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="scrapbook-container">
+
+            <aside class="sidebar-widgets">
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前位置</span>
+                            <span class="de">Aktuelle Position</span>
+                            <span class="en">Current Location</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body">
+                            <span class="zh">正在翻看留言簿...</span>
+                            <span class="de">Gästebuch durchblättern...</span>
+                            <span class="en">Browsing guestbook...</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="widget-wrapper widget-guestbook">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">访客留言</span>
+                            <span class="de">Gästebuch</span>
+                            <span class="en">Guestbook</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+
+                        <div class="chatbox-preview" style="margin-bottom: 8px;">
+                            <div class="chat-msg">
+                                <strong style="color: #9188a1;">Nettahcs:</strong>
+                                <span class="zh">欢迎光临!</span>
+                                <span class="de">Willkommen!</span>
+                                <span class="en">Welcome!</span>
+                            </div>
+                        </div>
+
+                        <a href="guestbook.html" class="chat-input-text" role="button"
+                           style="width: 100%; text-align: center; cursor: pointer; background: #fcfbfe; border: 1px solid #9188a1; padding: 5px 0; font-family: inherit; font-size: 11px; font-weight: bold; color: #312b3d; box-shadow: 1px 1px 0px rgba(0,0,0,0.15); text-decoration: none; display: block;">
+                            <span class="zh"> 留言簿 </span>
+                            <span class="de"> Gästebuch </span>
+                            <span class="en"> Guestbook </span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="scrapbook-card">
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <div class="header-box">
+                    <h1 class="zh">留言簿</h1>
+                    <p class="subtitle zh">留下你想对我说的话吧</p>
+                    <h1 class="de">Gästebuch</h1>
+                    <p class="subtitle de">Hinterlasse deine permanenten Spuren...</p>
+                    <h1 class="en">Guestbook</h1>
+                    <p class="subtitle en">Leave your permanent footprints here...</p>
+                </div>
+
+                <section class="content-section" style="padding: 5px 0;">
+                    <div class="pixel-journal-guestbook">
+                        <div class="giscus"></div>
+                    </div>
+                </section>
+            </main>
+
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="index.html" class="footer-link">返回首页</a></span>
+                <span class="de">Zurück zum ersten Mondaufgang? / <a href="index.html" class="footer-link">Startseite</a></span>
+                <span class="en">Want to return to the first moonrise? / <a href="index.html" class="footer-link">Home</a></span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        window.pageTitles = {
+            'zh': '涅塔克什 | 留言簿',
+            'de': 'Nettahcs | Gästebuch',
+            'en': 'Nettahcs | Guestbook'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => { updateBgmText(true); });
+                }
+            }, { once: true });
+
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration) {
+                        const percentage = (bgm.currentTime / bgm.duration) * 100;
+                        if (progressBar) progressBar.style.width = percentage + '%';
+                    }
+                });
+            }
+
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                if (bgm.muted) bgm.muted = false;
+                if (!bgm.paused) { bgm.pause(); updateBgmText(false); }
+                else { bgm.play().then(() => { updateBgmText(true); }); }
+            };
+
+            function updateBgmText(isAudioPlaying) {
+                if (!musicTitle) return;
+                if (isAudioPlaying) {
+                    musicTitle.innerHTML = `
+            <span class="zh">SABBATH - 正在播放</span>
+            <span class="de">SABBATH - Wird gespielt</span>
+            <span class="en">SABBATH - Now Playing</span>
+        `;
+                } else {
+                    musicTitle.innerHTML = `
+            <span class="zh">音乐已暂停</span>
+            <span class="de">Musik pausiert</span>
+            <span class="en">Music Paused</span>
+        `;
+                }
+            }
+        });
+    </script>
+    <script src="lang-switch.js"></script>
+
+    <script src="https://giscus.app/client.js"
+            data-repo="LizBoom/archiveofother"
+            data-repo-id="R_kgDOSgCjdg"
+            data-category="General"
+            data-category-id="DIC_kwDOSgCjds4C9a9b"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+</body>
+</html>
