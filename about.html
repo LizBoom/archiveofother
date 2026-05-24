@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什 | 关于我</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="scrapbook-container">
+
+            <aside class="sidebar-widgets">
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前位置</span>
+                            <span class="de">Aktuelle Position</span>
+                            <span class="en">Current Location</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body">
+                            <span class="zh">翻阅人物档案...</span>
+                            <span class="de">Geheimes Profil...</span>
+                            <span class="en">Reading profile...</span>
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="scrapbook-card">
+
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <div class="header-box">
+                    <h1 class="zh">关于我</h1>
+                    <p class="subtitle zh">玉在椟中求善价 钗于奁内待时飞</p>
+                    <h1 class="de">Über mich</h1>
+                    <p class="subtitle de">Und mein Herz ist ein wenig größer als das ganze Universum.</p>
+                    <h1 class="en">About Me</h1>
+                    <p class="subtitle en">E o meu coração é um pouco maior que o universo inteiro.</p>
+                </div>
+
+                <div style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 10px 10px 5px 10px;">
+
+                    <div style="margin-top: 10px; margin-bottom: 35px; text-align: center; position: relative; flex-shrink: 0;">
+                        <div class="polaroid-frame">
+                            <img src="images/avatar1.png" class="polaroid-img" alt="Avatar">
+                            <div class="polaroid-caption">
+                                <span class="zh">涅塔克什</span>
+                                <span class="de">Nettahcs</span>
+                                <span class="en">Nettahcs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quote-paper taped" style="width: 100%; max-width: 440px; margin-top: 0; margin-bottom: 30px; background-color: #dfdaf2; transform: rotate(-0.8deg); flex-shrink: 0;">
+                        <span class="quote-title">
+                            <span class="zh">我是谁</span>
+                            <span class="de">Wer bin ich?</span>
+                            <span class="en">Who am I?</span>
+                        </span>
+                        <p class="quote-text" style="text-align: left; margin-top: 10px;">
+                            <span class="zh">索拉里斯的魔法师，已经有127岁了！<br><br>目前坐标：萨尔茨堡州南部群山间的一处山谷。</span>
+                            <span class="de">Ein Zauberer von Solaris, bereits 127 Jahre alt!<br><br>Koordinaten: Ein Tal zwischen den Bergen im Süden des Bundeslandes Salzburg.</span>
+                            <span class="en">A magician from Solaris, already 127 years old!<br><br>Coordinates: A valley among the mountains in southern Salzburg.</span>
+                        </p>
+                    </div>
+
+                    <div class="quote-paper taped" style="width: 100%; max-width: 440px; margin-top: 0; margin-bottom: 30px; background-color: #ebdce2; transform: rotate(0.8deg); flex-shrink: 0;">
+                        <span class="quote-title">
+                            <span class="zh">作品</span>
+                            <span class="de">Werke</span>
+                            <span class="en">Works</span>
+                        </span>
+                        <div class="quote-text" style="text-align: left; margin-top: 10px;">
+                            <ul style="list-style-type: square; margin-left: 20px; line-height: 1.8; padding: 0;">
+                                <li>
+                                    <b>权欲天夏</b> -
+                                    <span class="zh">完全架空的异世界女帝文</span>
+                                    <span class="de">Eine Fantasiegeschichte über eine Kaiserin in einer vollständig erfundenen Welt</span>
+                                    <span class="en">A fantasy story about an empress in a fully invented world</span>
+                                </li>
+                                <li>
+                                    <b>星辰深渊</b> -
+                                    <span class="zh">原创太空歌剧TRPG核心规则</span>
+                                    <span class="de">Originales Space-Opera-TRPG-Regelwerk</span>
+                                    <span class="en">Original space opera TRPG core rulebook</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="quote-paper taped" style="width: 100%; max-width: 440px; margin-top: 0; margin-bottom: 30px; background-color: #d5e0f2; transform: rotate(-0.5deg); flex-shrink: 0;">
+                        <span class="quote-title">
+                            <span class="zh">跳转链接</span>
+                            <span class="de">Links</span>
+                            <span class="en">Links</span>
+                        </span>
+                        <div class="quote-text" style="text-align: left; margin-top: 10px;">
+                            <p>
+                                <a href="index.html" style="color: #4a3836; text-decoration: none; border-bottom: 1px dashed #4a3836; margin-right: 15px;">🏠 主页 (Home)</a>
+                                <a href="guestbook.html" style="color: #4a3836; text-decoration: none; border-bottom: 1px dashed #4a3836;">📖 留言簿 (Guestbook)</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="quote-paper taped" style="width: 100%; max-width: 440px; margin-top: 0; margin-bottom: 30px; background-color: #dce8df; transform: rotate(-0.6deg); flex-shrink: 0;">
+                        <span class="quote-title">
+                            <span class="zh">我的兴趣</span>
+                            <span class="de">Interessen</span>
+                            <span class="en">Interests</span>
+                        </span>
+                        <div class="quote-text" style="text-align: left; margin-top: 10px;">
+                            <div class="interest-tags">
+                                <span class="interest-tag">
+                                    <span class="zh">跑团</span>
+                                    <span class="de">Rollenspiele</span>
+                                    <span class="en">Tabletop RPG</span>
+                                </span>
+                                <span class="interest-tag">
+                                    <span class="zh">恐怖小说</span>
+                                    <span class="de">Horrorliteratur</span>
+                                    <span class="en">Horror Fiction</span>
+                                </span>
+                                <span class="interest-tag">
+                                    <span class="zh">比较文学</span>
+                                    <span class="de">Komparatistik</span>
+                                    <span class="en">Comparative Lit.</span>
+                                </span>
+                                <span class="interest-tag">
+                                    <span class="zh">电子游戏</span>
+                                    <span class="de">Videospiele</span>
+                                    <span class="en">Video Games</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quote-paper taped" style="width: 100%; max-width: 440px; margin-top: 0; margin-bottom: 15px; background-color: #eeddf2; transform: rotate(0.5deg); flex-shrink: 0;">
+                        <span class="quote-title">
+                            <span class="zh">支持我！</span>
+                            <span class="de">Unterstützung</span>
+                            <span class="en">Support</span>
+                        </span>
+                        <p class="quote-text" style="text-align: left; margin-top: 10px;">
+                            <span class="zh">等待补充链接</span>
+                            <span class="de">Links werden noch ergänzt.</span>
+                            <span class="en">Links coming soon.</span>
+                        </p>
+                    </div>
+
+                </div>
+            </main>
+
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="index.html" class="footer-link">返回首页</a> • 祝你一切顺利！</span>
+                <span class="de">Möchten Sie zum ersten Mondaufgang zurückkehren? / <a href="index.html" class="footer-link">Startseite</a> • Alles Gute für Sie!</span>
+                <span class="en">Want to return to the first moonrise? / <a href="index.html" class="footer-link">Home</a> • Wish you all the best!</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="lang-switch.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.pageTitles = { 'zh': '涅塔克什 | 关于我', 'de': 'Nettahcs | Über mich', 'en': 'Nettahcs | About Me' };
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => updateBgmText(true)).catch(() => { });
+                }
+            }, { once: true });
+
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration && progressBar) progressBar.style.width = (bgm.currentTime / bgm.duration) * 100 + '%';
+                });
+            }
+
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                bgm.muted = false;
+                if (!bgm.paused) { bgm.pause(); updateBgmText(false); }
+                else { bgm.play().then(() => updateBgmText(true)); }
+            };
+
+            function updateBgmText(isAudioPlaying) {
+                if (!musicTitle) return;
+                musicTitle.innerHTML = isAudioPlaying
+                    ? `<span class="zh">SABBATH - 正在播放</span><span class="de">SABBATH - Wird gespielt</span><span class="en">SABBATH - Now Playing</span>`
+                    : `<span class="zh">音乐已暂停</span><span class="de">Musik pausiert</span><span class="en">Music Paused</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

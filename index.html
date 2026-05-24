@@ -72,7 +72,7 @@
                         <a href="guestbook.html" class="chat-input-text" role="button" style="text-decoration: none; display: block; text-align: center; line-height: 28px;">
                             <span class="zh"> 留言簿 </span>
                             <span class="de"> Gästebuch </span>
-                            <span class="en"> Guestbook </span>                          
+                            <span class="en"> Guestbook </span>
                         </a>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="sticky-note-wrapper note-purple-pink">
                         <div class="note-content">
-                            <a href="#" class="sticky-note">
+                            <a href="about.html" class="sticky-note">
                                 <span class="zh">关于</span>
                                 <span class="de">ÜBER MICH</span>
                                 <span class="en">ABOUT</span>
@@ -173,8 +173,8 @@
                     </h2>
                     <hr class="pixel-line">
                     <p class="body-text">
-                        <span class="zh">欢迎光临，这是涅塔克什的原创作品、约稿的收集地，存放着我的一些随想、trpg模组、小说和一些其他的项目。我想要一个能够表达自己的角落，用来记录我的生活和创作。希望你们能找到些有趣的东西！</span>
-                        <span class="de">Willkommen. Dies ist die Sammelstelle für Nietakeshs Originalwerke und Auftragsarbeiten, in der meine Gedanken, TRPG-Module, Romane und andere Projekte untergebracht sind. Ich wollte eine Ecke, um mich auszudrücken, um mein Leben und meine Kreationen festzuhalten. Hoffentlich finden Sie etwas Interessantes!</span>
+                        <span class="zh">欢迎光临，这是涅塔克什的原创作品、约稿的收集地，存放着我的一些随想、trpg模组、小说和一些其他的项目。这里是我表达自己的角落，用来记录我的生活和创作。希望你们能找到些有趣的东西！</span>
+                        <span class="de">Willkommen. Dies ist die Sammelstelle für Nietakeshs Originalwerke und Auftragsarbeiten, in der meine Gedanken, TRPG-Module, Romane und andere Projekte untergebracht sind. Hoffentlich finden Sie etwas Interessantes!</span>
                         <span class="en">Welcome. This is the gathering place for Nietakesh's original works and commissions, housing my thoughts, TRPG modules, novels, and other projects. I wanted a corner to express myself, to record my life and creations. Hope you find something interesting!</span>
                     </p>
                 </section>
@@ -265,16 +265,16 @@
                 if (!musicTitle) return;
                 if (isAudioPlaying) {
                     musicTitle.innerHTML = `
-                                    <span class="zh">SABBATH - 正在播放</span>
-                                    <span class="de">SABBATH - Wird gespielt</span>
-                                    <span class="en">SABBATH - Now Playing</span>
-                                `;
+                                        <span class="zh">SABBATH - 正在播放</span>
+                                        <span class="de">SABBATH - Wird gespielt</span>
+                                        <span class="en">SABBATH - Now Playing</span>
+                                    `;
                 } else {
                     musicTitle.innerHTML = `
-                                    <span class="zh">音乐已暂停</span>
-                                    <span class="de">Musik pausiert</span>
-                                    <span class="en">Music Paused</span>
-                                `;
+                                        <span class="zh">音乐已暂停</span>
+                                        <span class="de">Musik pausiert</span>
+                                        <span class="en">Music Paused</span>
+                                    `;
                 }
             }
         });

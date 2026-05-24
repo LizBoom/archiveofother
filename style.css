@@ -549,6 +549,68 @@ body, html {
         box-shadow: 4px 8px 16px rgba(49, 43, 61, 0.18);
     }
 
+/* Polaroid 头像框 */
+.polaroid-frame {
+    display: inline-block;
+    background-color: #faf7f0;
+    padding: 10px 10px 28px 10px;
+    border: 1px solid #d8d2c4;
+    box-shadow: 3px 5px 14px rgba(49, 43, 61, 0.22), 1px 1px 0px rgba(255,255,255,0.8) inset;
+    transform: rotate(2deg);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    position: relative;
+    cursor: default;
+    image-rendering: auto;
+}
+
+    .polaroid-frame:hover {
+        transform: rotate(0deg) scale(1.04);
+        box-shadow: 6px 12px 28px rgba(49, 43, 61, 0.3);
+    }
+
+.polaroid-img {
+    display: block;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    image-rendering: auto;
+    filter: sepia(12%) contrast(1.05);
+}
+
+.polaroid-caption {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: #6b5f52;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+/* 兴趣标签 */
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.interest-tag {
+    display: inline-block;
+    background-color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(90, 80, 100, 0.25);
+    color: #4a4258;
+    font-size: 0.78rem;
+    padding: 3px 8px;
+    border-radius: 2px;
+    line-height: 1.5;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+    .interest-tag:hover {
+        background-color: rgba(255,255,255,0.85);
+        border-color: rgba(90, 80, 100, 0.5);
+    }
+
 .intro-text, .body-text {
     font-size: 0.95rem;
     line-height: 1.8;
@@ -568,12 +630,15 @@ body, html {
     background-color: #ebdcd5;
     border: 1px solid #4a3e3d;
     padding: 16px 20px;
+    position: relative;
+    overflow: visible;
     margin-top: 45px;
     transform: rotate(-0.8deg);
     position: relative;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+    /* 默认 quote-paper（主页每日一句）：顶部居中大头钉 */
     .quote-paper::before {
         content: "";
         position: absolute;
@@ -586,6 +651,46 @@ body, html {
         border-radius: 50%;
         box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
         z-index: 2;
+    }
+
+    /* about 页卡片专用：左右小胶带，贴在上角不遮文字 */
+    .quote-paper.taped::before,
+    .quote-paper.taped::after {
+        content: "";
+        position: absolute;
+        top: -7px;
+        width: 52px;
+        height: 16px;
+        background-color: rgba(210, 202, 222, 0.7);
+        backdrop-filter: blur(1px);
+        border-left: 1px dashed rgba(0,0,0,0.08);
+        border-right: 1px dashed rgba(0,0,0,0.08);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        border-radius: 1px;
+        z-index: 2;
+    }
+
+    .quote-paper.taped::before {
+        left: 12px;
+        transform: rotate(-8deg);
+        background: none;
+        background-color: rgba(210, 202, 222, 0.68);
+        border-radius: 1px;
+        width: 52px;
+        height: 16px;
+    }
+
+    .quote-paper.taped::after {
+        right: 12px;
+        transform: rotate(8deg);
+        background-color: rgba(210, 202, 222, 0.68);
+    }
+
+    /* about 页卡片标题居中 */
+    .quote-paper.taped .quote-title {
+        text-align: center;
+        display: block;
+        margin-bottom: 8px;
     }
 
 .quote-title {
