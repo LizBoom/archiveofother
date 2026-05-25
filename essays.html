@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什 | 随笔</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        window.pageTitles = {
+            'zh': '涅塔克什 | 随笔',
+            'de': 'Nettahcs | Essays',
+            'en': 'Nettahcs | Essays'
+        };
+    </script>
+</head>
+
+<body>
+
+    <div class="canvas">
+
+        <div class="scrapbook-container">
+
+            <!-- 左侧挂件 -->
+            <aside class="sidebar-widgets">
+
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor:pointer;">
+                    <div class="widget-content">
+
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+
+                        <hr class="pixel-line-sm">
+
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar"></div>
+                        </div>
+
+                    </div>
+
+                    <audio id="bgm-player"
+                           autoplay
+                           loop
+                           muted
+                           preload="auto"
+                           src="https://files.catbox.moe/u948f0.mp3"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+
+                        <div class="widget-header">
+                            <span class="zh">当前状态</span>
+                            <span class="de">Aktueller Zustand</span>
+                            <span class="en">Current Status</span>
+                        </div>
+
+                        <hr class="pixel-line-sm">
+
+                        <p class="widget-body">
+                            <span class="zh">正在整理记忆碎片……</span>
+                            <span class="de">Erinnerungsfragmente werden sortiert...</span>
+                            <span class="en">Sorting fragmented memories...</span>
+                        </p>
+
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- 主内容 -->
+            <main class="scrapbook-card essays-page">
+
+                <!-- 胶带 -->
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <!-- 页头 -->
+                <div class="header-box">
+
+                    <h1 class="zh">随笔</h1>
+                    <p class="subtitle zh">一些未被整理的夜晚</p>
+
+                    <h1 class="de">Essays</h1>
+                    <p class="subtitle de">Unsortierte Nächte und Gedanken</p>
+
+                    <h1 class="en">Essays</h1>
+                    <p class="subtitle en">Unsorted nights and fragmented thoughts</p>
+
+                </div>
+
+                <!-- 页面说明 -->
+                <section class="content-section">
+
+                    <p class="body-text">
+                        <span class="zh">
+                            这里存放着我破碎的梦和眼泪
+                            
+                        </span>
+
+                        <span class="de">
+                            Hier liegen meine zertrümmerten Träume und Tränen
+                        </span>
+
+                        <span class="en">
+                            A place for my fragmented dreams and tears
+                        </span>
+                    </p>
+
+                </section>
+
+                <!-- 随笔墙 -->
+                <div class="sticky-wall">
+
+                    <!-- 01 -->
+                    <a href="essays/001-celebrate.html" class="essay-note note-yellow">
+
+                        <div class="note-tape"></div>
+
+                        <div class="note-header">
+                            <span class="note-date">2026.05.26</span>
+                        </div>
+
+                        <h3 class="note-title">
+                            <span class="zh">小站初具雏形!</span>
+                            <span class="de">Erste Entwürfe!</span>
+                            <span class="en">First Drafts!</span>
+                        </h3>
+
+                        <p class="note-preview">
+                            <span class="zh">
+                                在w3schools和nekoweb上到处学习，在VS的Agent的帮助下终于整理出了一个初具雏形的站点！虽然还很简陋，但已经能够满足基本的展示了。
+                                ……
+                            </span>
+
+                            <span class="de">
+                                In den W3schools und Nekoweb gelernt, mit Hilfe von endlich einen ersten Entwurf einer persönlichen Website erstellt!……
+                            </span>
+
+                            <span class="en">
+                                Learned from w3schools and nekoweb, and with help, I finally created a basic version of my personal website!……
+                            </span>
+                        </p>
+
+                    </a>
+
+                    <!-- 02 -->
+                    <a href="#" class="essay-note note-blue">
+
+                        <div class="note-tape"></div>
+
+                        <div class="note-header">
+                            <span class="note-date">2026.05.26</span>
+                        </div>
+
+                        <h3 class="note-title">
+                            <span class="zh">无题 / Untitled</span>
+                            <span class="de">Ohne Titel</span>
+                            <span class="en">Untitled</span>
+                        </h3>
+
+                        <p class="note-preview">
+                            <span class="zh">
+                                示例文字
+                                示例文字。
+                            </span>
+
+                            <span class="de">
+                                ...
+                            </span>
+
+                            <span class="en">
+                                .
+                            </span>
+                        </p>
+
+                    </a>
+
+                    <!-- 03 -->
+                    <a href="#" class="essay-note note-pink">
+
+                        <div class="note-tape"></div>
+
+                        <div class="note-header">
+                            <span class="note-date">2026.05.26</span>
+                        </div>
+
+                        <h3 class="note-title">
+                            <span class="zh">无题 / Untitled</span>
+                            <span class="de">Ohne Titel</span>
+                            <span class="en">Untitled</span>
+                        </h3>
+
+                        <p class="note-preview">
+                            <span class="zh">
+                                示例文字
+                                示例文字。
+                            </span>
+
+                            <span class="de">
+                                ...
+                            </span>
+
+                            <span class="en">
+                                .
+                            </span>
+                        </p>
+
+                    </a>
+
+                    <!-- 04 -->
+                    <a href="#" class="essay-note note-green">
+
+                        <div class="note-tape"></div>
+
+                        <div class="note-header">
+                            <span class="note-date">2026.05.26</span>
+                        </div>
+
+                        <h3 class="note-title">
+                            <span class="zh">无题 / Untitled</span>
+                            <span class="de">Ohne Titel</span>
+                            <span class="en">Untitled</span>
+                        </h3>
+
+                        <p class="note-preview">
+                            <span class="zh">
+                                示例文字
+                                示例文字。
+                            </span>
+
+                            <span class="de">
+                                ...
+                            </span>
+
+                            <span class="en">
+                                .
+                            </span>
+                        </p>
+
+                    </a>
+
+                </div>
+
+
+            </main>
+
+            <!-- 语言标签 -->
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <!-- footer -->
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="index.html" class="footer-link">返回首页</a> • 祝你一切顺利！</span>
+                <span class="de">Möchten Sie zum ersten Mondaufgang zurückkehren? / <a href="index.html" class="footer-link">Startseite</a> • Alles Gute für Sie!</span>
+                <span class="en">Want to return to the first moonrise? / <a href="index.html" class="footer-link">Home</a> • Wish you all the best!</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- 音乐 -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            document.addEventListener('click', function () {
+
+                if (bgm && bgm.muted) {
+
+                    bgm.muted = false;
+
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    }).catch(() => { });
+
+                }
+
+            }, { once: true });
+
+            if (bgm) {
+
+                bgm.addEventListener('timeupdate', function () {
+
+                    if (bgm.duration) {
+
+                        const percentage =
+                            (bgm.currentTime / bgm.duration) * 100;
+
+                        if (progressBar) {
+                            progressBar.style.width = percentage + '%';
+                        }
+                    }
+                });
+            }
+
+            window.togglePlayMusic = function () {
+
+                if (!bgm) return;
+
+                if (bgm.muted) bgm.muted = false;
+
+                if (!bgm.paused) {
+
+                    bgm.pause();
+                    updateBgmText(false);
+
+                } else {
+
+                    bgm.play().then(() => {
+                        updateBgmText(true);
+                    });
+
+                }
+            };
+
+            function updateBgmText(isPlaying) {
+
+                if (!musicTitle) return;
+
+                if (isPlaying) {
+
+                    musicTitle.innerHTML = `
+                                <span class="zh">SABBATH - 正在播放</span>
+                                <span class="de">SABBATH - Wird gespielt</span>
+                                <span class="en">SABBATH - Now Playing</span>
+                            `;
+
+                } else {
+
+                    musicTitle.innerHTML = `
+                                <span class="zh">音乐已暂停</span>
+                                <span class="de">Musik pausiert</span>
+                                <span class="en">Music Paused</span>
+                            `;
+                }
+            }
+
+        });
+
+    </script>
+
+    <script src="lang-switch.js"></script>
+
+</body>
+</html>

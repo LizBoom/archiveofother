@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什 | 初具雏形!</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        window.pageTitles = {
+            'zh': '涅塔克什 | 初具雏形!',
+            'de': 'Nettahcs | Erste Entwürfe!',
+            'en': 'Nettahcs | First Drafts!'
+        };
+    </script>
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="scrapbook-container">
+
+            <aside class="sidebar-widgets">
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前状态</span>
+                            <span class="de">Aktueller Status</span>
+                            <span class="en">Current Status</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body">
+                            <span class="zh">正在阅读随笔...</span>
+                            <span class="de">Essay wird gelesen...</span>
+                            <span class="en">Reading an essay...</span>
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="scrapbook-card">
+
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <div class="header-box">
+                    <h1 class="zh">个人站点初具雏形！</h1>
+                    <p class="subtitle zh">2026.05.26</p>
+                    <h1 class="de">Persönliche Website hat Erste Entwürfe!</h1>
+                    <p class="subtitle de">2026.05.26</p>
+                    <h1 class="en">Personal Website Taking First Drafts!</h1>
+                    <p class="subtitle en">2026.05.26</p>
+                </div>
+
+                <section class="content-section">
+                    <div class="essay-body">
+
+                        <p class="zh">
+                            在w3schools和nekoweb上到处学习，在VS的Agent的帮助下终于整理出了一个初具雏形的站点！虽然还很简陋，但已经能够满足基本的展示了。
+                        </p>
+                        <p class="de">
+                            In den W3schools und Nekoweb gelernt, mit Hilfe von endlich einen ersten Entwurf einer persönlichen Website erstellt! Obwohl sie noch ziemlich rudimentär ist, kann sie bereits die grundlegenden Anforderungen erfüllen.
+                        </p>
+                        <p class="en">
+                            Learned from w3schools and nekoweb, and with help, I finally created a basic version of my personal website! Although it's still quite rudimentary, it can already meet basic display requirements.
+                        </p>
+
+                        <!-- 继续在这里添加段落 -->
+                        <!-- 每段用 <p class="zh"> / <p class="de"> / <p class="en"> 包裹 -->
+
+                    </div>
+                </section>
+
+                <div class="essay-nav">
+                    <a href="../essays.html" class="essay-nav-btn">
+                        <span class="zh">← 返回随笔</span>
+                        <span class="de">← Zurück zu Essays</span>
+                        <span class="en">← Back to Essays</span>
+                    </a>
+                </div>
+
+            </main>
+
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="../index.html" class="footer-link">返回首页</a> • <a href="../essays.html" class="footer-link">返回随笔</a></span>
+                <span class="de">Möchten Sie zum ersten Mondaufgang zurückkehren? / <a href="../index.html" class="footer-link">Startseite</a> • <a href="../essays.html" class="footer-link">Essays</a></span>
+                <span class="en">Want to return to the first moonrise? / <a href="../index.html" class="footer-link">Home</a> • <a href="../essays.html" class="footer-link">Essays</a></span>
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="../lang-switch.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => updateBgmText(true)).catch(() => { });
+                }
+            }, { once: true });
+
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration && progressBar)
+                        progressBar.style.width = (bgm.currentTime / bgm.duration) * 100 + '%';
+                });
+            }
+
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                bgm.muted = false;
+                if (!bgm.paused) { bgm.pause(); updateBgmText(false); }
+                else { bgm.play().then(() => updateBgmText(true)); }
+            };
+
+            function updateBgmText(isPlaying) {
+                if (!musicTitle) return;
+                musicTitle.innerHTML = isPlaying
+                    ? `<span class="zh">SABBATH - 正在播放</span><span class="de">SABBATH - Wird gespielt</span><span class="en">SABBATH - Now Playing</span>`
+                    : `<span class="zh">音乐已暂停</span><span class="de">Musik pausiert</span><span class="en">Music Paused</span>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

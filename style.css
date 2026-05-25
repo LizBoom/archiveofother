@@ -864,6 +864,151 @@ body::before {
     z-index: 15;
 }
 
+/* 文章内容页 */
+.essay-body {
+    line-height: 2.1;
+    color: #463f52;
+    font-size: 0.95rem;
+}
+
+    .essay-body p {
+        margin-bottom: 1.4em;
+        text-align: justify;
+    }
+
+        .essay-body p + p {
+            text-indent: 2em;
+        }
+
+.essay-nav {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed #9c94a8;
+}
+
+.essay-nav-btn {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #576d8c;
+    text-decoration: none;
+    border-bottom: 1px dashed #576d8c;
+    transition: color 0.15s ease;
+}
+
+    .essay-nav-btn:hover {
+        color: #312b3d;
+        border-bottom-color: #312b3d;
+    }
+
+/* ==========================================
+    随笔墙 / Essay Wall
+   ========================================== */
+
+.sticky-wall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin: 10px 0 40px 0;
+}
+
+/* 单张便利贴 */
+.essay-note {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 18px 18px 18px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 2px 5px 12px rgba(45, 43, 56, 0.1);
+    text-decoration: none;
+    color: #312b3d;
+    transform: rotate(-0.5deg);
+    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+    .essay-note:nth-child(even) {
+        transform: rotate(0.6deg);
+    }
+
+    .essay-note:hover {
+        transform: translateY(-6px) rotate(0deg) scale(1.02);
+        box-shadow: 4px 14px 28px rgba(45, 43, 56, 0.18);
+        z-index: 5;
+    }
+
+/* 颜色变体 — 与关于页卡片色调呼应 */
+.note-yellow {
+    background-color: #f2edda;
+}
+
+.note-blue {
+    background-color: #d5e0f2;
+}
+
+.note-pink {
+    background-color: #ebdce2;
+}
+
+.note-green {
+    background-color: #dce8df;
+}
+
+/* 便利贴顶部小胶带 */
+.note-tape {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 52px;
+    height: 16px;
+    background-color: rgba(210, 202, 222, 0.72);
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent);
+    background-size: 8px 8px;
+    border-left: 1px dashed rgba(0,0,0,0.08);
+    border-right: 1px dashed rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.essay-note:nth-child(even) .note-tape {
+    transform: translateX(-50%) rotate(2deg);
+    background-color: rgba(200, 192, 215, 0.68);
+}
+
+/* 日期 */
+.note-header {
+    margin-bottom: 8px;
+}
+
+.note-date {
+    font-size: 0.72rem;
+    color: #7a6f88;
+    letter-spacing: 1px;
+}
+
+/* 标题 */
+.note-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #2d2638;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* 预览文字 */
+.note-preview {
+    font-size: 0.82rem;
+    color: #5a5066;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+/* 响应式：小屏改单列 */
+@media screen and (max-width: 600px) {
+    .sticky-wall {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ==========================================
     11. 响应式方案
    ========================================== */
