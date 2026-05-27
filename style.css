@@ -27,7 +27,7 @@
 }
 
 /* ==========================================
-   1. 基础全局样式设置
+   基础全局样式设置
    ========================================== */
 
 body, html {
@@ -37,7 +37,7 @@ body, html {
 }
 
 /* ==========================================
-   2. 背景与大容器设置
+   背景与大容器设置
    ========================================== */
 .canvas {
     width: 100%;
@@ -54,7 +54,7 @@ body, html {
 }
 
 /* ==========================================
-   3. 双栏网格布局
+   双栏网格布局
    ========================================== */
 .scrapbook-container {
     width: 100%;
@@ -68,7 +68,7 @@ body, html {
 }
 
 /* ==========================================
-   4. 左侧侧边栏
+   左侧侧边栏
    ========================================== */
 .sidebar-widgets {
     display: flex;
@@ -277,7 +277,7 @@ body, html {
 }
 
 /* ==========================================
-   5. 主内容区卡片设计
+   主内容区卡片设计
    ========================================== */
 .scrapbook-card {
     width: 100%;
@@ -357,7 +357,7 @@ body, html {
     }
 
 /* ==========================================
-   6. 便利贴导航栏
+   便利贴导航栏
    ========================================== */
 .nav-bar-sticky {
     display: flex;
@@ -501,7 +501,7 @@ body, html {
 }
 
 /* ==========================================
-   7. 内部元素与自定义头像设计
+   内部元素与自定义头像设计
    ========================================== */
 .content-section {
     margin-bottom: 35px;
@@ -710,7 +710,7 @@ body, html {
 }
 
 /* ==========================================
-   8. 底部横栏
+   底部横栏
    ========================================== */
 .global-footer {
     width: 100%;
@@ -738,7 +738,7 @@ body, html {
     }
 
 /* ==========================================
-   9. 全局网页噪点滤镜与三语核心隐藏基类
+   全局网页噪点滤镜与三语核心隐藏基类
    ========================================== */
 body::before {
     content: "";
@@ -792,7 +792,7 @@ body::before {
 }
 
 /* ==========================================
-   10. 侧标签悬浮样式
+   侧标签悬浮样式
    ========================================== */
 .lang-bookmarks-container {
     position: absolute;
@@ -1010,7 +1010,211 @@ body::before {
 }
 
 /* ==========================================
-    11. 响应式方案
+    创作物归档页 / Archive
+   ========================================== */
+
+/* 作品卡片网格 */
+.archive-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* 分类面板，默认隐藏 */
+.archive-panel {
+    display: none;
+}
+
+    .archive-panel.active {
+        display: block;
+    }
+
+/* 激活状态的便利贴 tab */
+.archive-tab.active-tab {
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* 单张作品卡片 */
+.archive-card {
+    background-color: #faf8f4 !important;
+    border: 1px solid rgba(90, 80, 110, 0.15);
+    padding: 14px 16px;
+    position: relative;
+    box-shadow: 2px 3px 8px rgba(45, 43, 56, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+    .archive-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 3px 6px 16px rgba(45, 43, 56, 0.15);
+    }
+
+/* 作品 banner 图片 */
+.archive-card-banner {
+    display: block;
+    width: calc(100% + 32px);
+    height: 140px;
+    object-fit: cover;
+    margin: -14px -16px 14px -16px;
+    border-bottom: 1px solid rgba(90, 80, 110, 0.12);
+}
+
+/* 无 banner 时的占位渐变块 */
+.archive-card-banner-placeholder {
+    width: calc(100% + 32px);
+    height: 90px;
+    margin: -14px -16px 14px -16px;
+    background: linear-gradient(135deg, #dfdaf2 0%, #d5e0f2 100%);
+    border-bottom: 1px solid rgba(90, 80, 110, 0.12);
+}
+
+/* 档案卡片顶部：状态标记行 */
+.archive-card-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+/* 状态标记 */
+.badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    line-height: 1.6;
+}
+
+.badge-wip {
+    background-color: #d4e8c2;
+    color: #3a6130;
+    border: 1px solid #b5d4a0;
+}
+
+.badge-done {
+    background-color: #c2d4e8;
+    color: #2a4a6a;
+    border: 1px solid #a0bcd4;
+}
+
+.badge-hiatus {
+    background-color: #e8e0c2;
+    color: #6a5a2a;
+    border: 1px solid #d4c8a0;
+}
+
+.badge-dev {
+    background-color: #e0c2e8;
+    color: #5a2a6a;
+    border: 1px solid #cca0d4;
+}
+
+.badge-ongoing {
+    background-color: #e8c2c2;
+    color: #6a2a2a;
+    border: 1px solid #d4a0a0;
+}
+
+/* 档案卡片标题 */
+.archive-card-title {
+    font-size: 0.92rem;
+    font-weight: bold;
+    color: #2d2638;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* 档案卡片简介 */
+.archive-card-desc {
+    font-size: 0.78rem;
+    color: #6a6078;
+    line-height: 1.7;
+}
+
+/* 角色表网格 */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.character-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #faf8f4 !important;
+    border: 1px solid rgba(90, 80, 110, 0.15);
+    box-shadow: 2px 3px 8px rgba(45, 43, 56, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .character-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 3px 6px 16px rgba(45, 43, 56, 0.15);
+    }
+
+/* 角色照片 */
+.character-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+}
+
+/* 角色照片无图时占位 */
+.character-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(160deg, #dfdaf2 0%, #ebdce2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: rgba(90, 80, 110, 0.3);
+}
+
+/* 角色信息 */
+.character-info {
+    padding: 8px 8px 10px;
+    width: 100%;
+}
+
+.character-name {
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: #2d2638;
+    margin-bottom: 3px;
+    line-height: 1.3;
+}
+
+.character-desc {
+    font-size: 0.7rem;
+    color: #7a6f88;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 600px) {
+    .character-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .archive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+    响应式方案
    ========================================== */
 @media screen and (max-width: 900px) {
     /* 垂直画布 */

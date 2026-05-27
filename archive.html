@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涅塔克什 | 创作物</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.pageTitles = {
+            'zh': '涅塔克什 | 创作物',
+            'de': 'Nettahcs | Werke',
+            'en': 'Nettahcs | Archive'
+        };
+    </script>
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="scrapbook-container">
+
+            <aside class="sidebar-widgets">
+                <div class="widget-wrapper widget-music" onclick="togglePlayMusic()" style="cursor: pointer;">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前播放</span>
+                            <span class="de">Aktuelle Wiedergabe</span>
+                            <span class="en">Now Playing</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body" id="music-title">
+                            <span class="zh">SABBATH - 点击任意位置播放</span>
+                            <span class="de">SABBATH - Irgendwo klicken zum Abspielen</span>
+                            <span class="en">SABBATH - Click anywhere to play</span>
+                        </p>
+                        <div class="music-progress">
+                            <div class="progress-bar" id="music-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <audio id="bgm-player" autoplay loop src="https://files.catbox.moe/u948f0.mp3" muted preload="auto"></audio>
+                </div>
+
+                <div class="widget-wrapper widget-mood">
+                    <div class="widget-content">
+                        <div class="widget-header">
+                            <span class="zh">当前位置</span>
+                            <span class="de">Aktuelle Position</span>
+                            <span class="en">Current Location</span>
+                        </div>
+                        <hr class="pixel-line-sm">
+                        <p class="widget-body">
+                            <span class="zh">翻阅创作档案...</span>
+                            <span class="de">Werkarchiv wird durchsucht...</span>
+                            <span class="en">Browsing the archive...</span>
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="scrapbook-card">
+
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <div class="tape tape-bottom-left"></div>
+                <div class="tape tape-bottom-right"></div>
+
+                <div class="header-box">
+                    <h1 class="zh">创作物</h1>
+                    <p class="subtitle zh">阳春召我以烟景，大块假我以文章</p>
+                    <h1 class="de">Werke</h1>
+                    <p class="subtitle de">Triffst du nur das Zauberwort.</p>
+                    <h1 class="en">Archive</h1>
+                    <p class="subtitle en">Earth of the limpid gray of clouds brighter and clearer for my sake!</p>
+                </div>
+
+                <!-- 便利贴导航 -->
+                <nav class="nav-bar-sticky" id="archive-nav">
+                    <div class="sticky-note-wrapper note-purple-light">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note archive-tab active-tab" data-panel="coc">
+                                <span class="zh">COC模组</span>
+                                <span class="de">COC</span>
+                                <span class="en">COC</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-mid">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note archive-tab" data-panel="characters">
+                                <span class="zh">角色表</span>
+                                <span class="de">Chars</span>
+                                <span class="en">Chars</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-blue">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note archive-tab" data-panel="trpg">
+                                <span class="zh">TRPG规则</span>
+                                <span class="de">TRPG</span>
+                                <span class="en">TRPG</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-pink">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note archive-tab" data-panel="world">
+                                <span class="zh">世界观</span>
+                                <span class="de">Welt</span>
+                                <span class="en">World</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sticky-note-wrapper note-purple-light">
+                        <div class="note-content">
+                            <a href="#" class="sticky-note archive-tab" data-panel="fiction">
+                                <span class="zh">原创小说</span>
+                                <span class="de">Romane</span>
+                                <span class="en">Fiction</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- COC 模组 -->
+                <section class="archive-panel active content-section" id="panel-coc">
+                    <div class="archive-grid">
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-done">
+                                    <span class="zh">已完成</span><span class="de">Abgeschlossen</span><span class="en">Done</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">
+                                <span class="zh">橙园遗梦</span>
+                                <span class="de">Orangen</span>
+                                <span class="en">Reverie of the Orange Grove</span>
+                            </p>
+                            <p class="archive-card-desc">
+                                <span class="zh">1919年初春，一封来自偏远山村的遗产信函，将调查员引向一座被群山与旧事包围的宅院。</span>
+                                <span class="de">Modulbeschreibung.</span>
+                                <span class="en">Module description.</span>
+                            </p>
+                        </div>
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-wip">
+                                    <span class="zh">创作中</span><span class="de">In Arbeit</span><span class="en">WIP</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例模组标题 B</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">模组简介。</span>
+                                <span class="de">Modulbeschreibung.</span>
+                                <span class="en">Module description.</span>
+                            </p>
+                        </div>
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-hiatus">
+                                    <span class="zh">搁置中</span><span class="de">Pausiert</span><span class="en">On Hiatus</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例模组标题 C</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">模组简介。</span>
+                                <span class="de">Modulbeschreibung.</span>
+                                <span class="en">Module description.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- 角色表 -->
+                <section class="archive-panel content-section" id="panel-characters">
+                    <div class="character-grid">
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="character-card">
+                            <div class="character-photo-placeholder">✦</div>
+                            <div class="character-info">
+                                <p class="character-name">
+                                    <span class="zh">示例角色名</span>
+                                    <span class="de">Beispielname</span>
+                                    <span class="en">Example Name</span>
+                                </p>
+                                <p class="character-desc">
+                                    <span class="zh">世界观归属 · 身份</span>
+                                    <span class="de">Welt · Rolle</span>
+                                    <span class="en">World · Role</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 复制上方 character-card 块来添加新角色 -->
+                        <!-- 有立绘时把 character-photo-placeholder 替换成: -->
+                        <!-- <img class="character-photo" loading="lazy" src="images/char-xxx.png" alt="角色名"> -->
+
+                    </div>
+                </section>
+
+                <!-- 原创 TRPG 规则 -->
+                <section class="archive-panel content-section" id="panel-trpg">
+                    <div class="archive-grid">
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-dev">
+                                    <span class="zh">开发中</span><span class="de">In Entwicklung</span><span class="en">In Dev</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">星辰深渊</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">原创太空歌剧TRPG核心规则。</span>
+                                <span class="de">Originales Space-Opera-TRPG-Regelwerk.</span>
+                                <span class="en">Original space opera TRPG core rulebook.</span>
+                            </p>
+                        </div>
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-wip">
+                                    <span class="zh">创作中</span><span class="de">In Arbeit</span><span class="en">WIP</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例规则书标题</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">规则书简介。</span>
+                                <span class="de">Regelbuchbeschreibung.</span>
+                                <span class="en">Rulebook description.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- 世界观 -->
+                <section class="archive-panel content-section" id="panel-world">
+                    <div class="archive-grid">
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-wip">
+                                    <span class="zh">创作中</span><span class="de">In Arbeit</span><span class="en">WIP</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例世界观名称 A</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">世界观简介。</span>
+                                <span class="de">Weltbeschreibung.</span>
+                                <span class="en">World description.</span>
+                            </p>
+                        </div>
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-wip">
+                                    <span class="zh">创作中</span><span class="de">In Arbeit</span><span class="en">WIP</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例世界观名称 B</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">世界观简介。</span>
+                                <span class="de">Weltbeschreibung.</span>
+                                <span class="en">World description.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- 原创小说 -->
+                <section class="archive-panel content-section" id="panel-fiction">
+                    <div class="archive-grid">
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-ongoing">
+                                    <span class="zh">连载中</span><span class="de">Laufend</span><span class="en">Ongoing</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">权欲天夏</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">完全架空的异世界女帝文。</span>
+                                <span class="de">Eine Fantasiegeschichte über eine Kaiserin in einer erfundenen Welt.</span>
+                                <span class="en">A fantasy story about an empress in a fully invented world.</span>
+                            </p>
+                        </div>
+
+                        <div class="archive-card">
+                            <div class="archive-card-banner-placeholder"></div>
+                            <div class="archive-card-top">
+                                <span class="badge badge-wip">
+                                    <span class="zh">创作中</span><span class="de">In Arbeit</span><span class="en">WIP</span>
+                                </span>
+                            </div>
+                            <p class="archive-card-title">示例小说标题</p>
+                            <p class="archive-card-desc">
+                                <span class="zh">小说简介。</span>
+                                <span class="de">Romanbeschreibung.</span>
+                                <span class="en">Novel description.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+            <div class="lang-bookmarks-container">
+                <button class="lang-bookmark-btn btn-zh" data-lang="zh">中文</button>
+                <button class="lang-bookmark-btn btn-de" data-lang="de">DE</button>
+                <button class="lang-bookmark-btn btn-en" data-lang="en">EN</button>
+            </div>
+
+        </div>
+
+        <footer class="global-footer">
+            <p>
+                <span class="zh">想要回到第一次月出吗？ / <a href="index.html" class="footer-link">返回首页</a> • 祝你一切顺利！</span>
+                <span class="de">Möchten Sie zum ersten Mondaufgang zurückkehren? / <a href="index.html" class="footer-link">Startseite</a> • Alles Gute für Sie!</span>
+                <span class="en">Want to return to the first moonrise? / <a href="index.html" class="footer-link">Home</a> • Wish you all the best!</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="lang-switch.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 音乐
+            const bgm = document.getElementById('bgm-player');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('music-bar');
+
+            document.addEventListener('click', function () {
+                if (bgm && bgm.muted) {
+                    bgm.muted = false;
+                    bgm.play().then(() => updateBgmText(true)).catch(() => { });
+                }
+            }, { once: true });
+
+            if (bgm) {
+                bgm.addEventListener('timeupdate', function () {
+                    if (bgm.duration && progressBar)
+                        progressBar.style.width = (bgm.currentTime / bgm.duration) * 100 + '%';
+                });
+            }
+
+            window.togglePlayMusic = function () {
+                if (!bgm) return;
+                bgm.muted = false;
+                if (!bgm.paused) { bgm.pause(); updateBgmText(false); }
+                else { bgm.play().then(() => updateBgmText(true)); }
+            };
+
+            function updateBgmText(isPlaying) {
+                if (!musicTitle) return;
+                musicTitle.innerHTML = isPlaying
+                    ? `<span class="zh">SABBATH - 正在播放</span><span class="de">SABBATH - Wird gespielt</span><span class="en">SABBATH - Now Playing</span>`
+                    : `<span class="zh">音乐已暂停</span><span class="de">Musik pausiert</span><span class="en">Music Paused</span>`;
+            }
+
+            // 便利贴 tab 切换
+            const tabs = document.querySelectorAll('.archive-tab');
+            const panels = document.querySelectorAll('.archive-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = tab.getAttribute('data-panel');
+
+                    // 切换 tab 高亮
+                    tabs.forEach(t => t.classList.remove('active-tab'));
+                    tab.classList.add('active-tab');
+
+                    // 切换内容面板
+                    panels.forEach(p => p.classList.remove('active'));
+                    document.getElementById('panel-' + target).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

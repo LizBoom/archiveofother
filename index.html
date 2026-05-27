@@ -130,7 +130,7 @@
                     </div>
                     <div class="sticky-note-wrapper note-purple-blue">
                         <div class="note-content">
-                            <a href="#" class="sticky-note">
+                            <a href="archive.html" class="sticky-note">
                                 <span class="zh">创作物</span>
                                 <span class="de">ARCHIV</span>
                                 <span class="en">ARCHIVE</span>
@@ -265,16 +265,16 @@
                 if (!musicTitle) return;
                 if (isAudioPlaying) {
                     musicTitle.innerHTML = `
-                                        <span class="zh">SABBATH - 正在播放</span>
-                                        <span class="de">SABBATH - Wird gespielt</span>
-                                        <span class="en">SABBATH - Now Playing</span>
-                                    `;
+                                            <span class="zh">SABBATH - 正在播放</span>
+                                            <span class="de">SABBATH - Wird gespielt</span>
+                                            <span class="en">SABBATH - Now Playing</span>
+                                        `;
                 } else {
                     musicTitle.innerHTML = `
-                                        <span class="zh">音乐已暂停</span>
-                                        <span class="de">Musik pausiert</span>
-                                        <span class="en">Music Paused</span>
-                                    `;
+                                            <span class="zh">音乐已暂停</span>
+                                            <span class="de">Musik pausiert</span>
+                                            <span class="en">Music Paused</span>
+                                        `;
                 }
             }
         });
